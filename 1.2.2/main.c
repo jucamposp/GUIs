@@ -3,14 +3,13 @@
 
 int main(int argc, char* args[]) {
     SDL_Init(SDL_INIT_EVERYTHING);
-    SDL_Window* win = SDL_CreateWindow("Desenho Simples SDL2_gfx",
-                                       SDL_WINDOWPOS_UNDEFINED,
-                                       SDL_WINDOWPOS_UNDEFINED,
-                                       500, 500,
-                                       SDL_WINDOW_SHOWN);
+    SDL_Window* win = SDL_CreateWindow("Figuras complexas",
+                            SDL_WINDOWPOS_UNDEFINED,
+                            SDL_WINDOWPOS_UNDEFINED,
+                            500, 500, SDL_WINDOW_SHOWN
+                        );
     SDL_Renderer* ren = SDL_CreateRenderer(win, -1, 0);
 
-    // Fundo branco
     SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
     SDL_RenderClear(ren);
 
@@ -29,7 +28,6 @@ int main(int argc, char* args[]) {
     thickLineRGBA(ren, 50, 400, 450, 450, 4, 0, 0, 0, 255);
 
     SDL_RenderPresent(ren);
-
     SDL_Delay(5000);
 
     SDL_DestroyRenderer(ren);
