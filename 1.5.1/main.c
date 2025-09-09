@@ -38,7 +38,7 @@ int main(int argc, char* args[]) {
         last_update_time = current_time;
 
         // Processa os eventos
-        while (SDL_PollEvent(&evt)) {
+        if (SDL_WaitEventTimeout(&evt, 10)) {
             switch (evt.type) {
                 case SDL_QUIT:
                     running = false;
@@ -86,19 +86,18 @@ int main(int argc, char* args[]) {
             time_dy = -time_dy;
         }
 
-        /* RENDERIZACAO */
         SDL_SetRenderDrawColor(ren, 0xFF, 0xFF, 0xFF, 0x00);
         SDL_RenderClear(ren);
 
-        // Desenha o retângulo que se move com o tempo (vermelho)
+        // Retângulo vermelho que se move com o tempo
         SDL_SetRenderDrawColor(ren, 0xFF, 0x00, 0x00, 0xFF);
         SDL_RenderFillRect(ren, &rect_time);
 
-        // Desenha o retângulo que se move com o teclado (azul)
+        // Retângulo azul que se move com o teclado
         SDL_SetRenderDrawColor(ren, 0x00, 0x00, 0xFF, 0xFF);
         SDL_RenderFillRect(ren, &rect_keyboard);
 
-        // Desenha o retângulo que segue o mouse (verde)
+        // Retângulo verde que segue o mouse 
         SDL_SetRenderDrawColor(ren, 0x00, 0xFF, 0x00, 0xFF);
         SDL_RenderFillRect(ren, &rect_mouse);
         
