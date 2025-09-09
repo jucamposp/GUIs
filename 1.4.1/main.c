@@ -7,10 +7,10 @@
 const int MAX_RECTS = 10;
 
 // Armazenar informações dos retângulos
-struct RectangleInfo {
+typedef struct {
     SDL_Rect rect;
     SDL_Color color;
-};
+} RectangleInfo;
 
 int main(int argc, char* args[]) {
     /* INICIALIZACAO */
@@ -95,7 +95,8 @@ int main(int argc, char* args[]) {
                         if (num_fixed_rects < MAX_RECTS) {
                             int mouse_x = evt.button.x;
                             int mouse_y = evt.button.y;
-                            fixed_rects[num_fixed_rects].rect = {mouse_x, mouse_y, 20, 20}; // Cria um novo retângulo na posição do clique
+                            SDL_Rect new_rect = {mouse_x, mouse_y, 20, 20};
+                            fixed_rects[num_fixed_rects].rect = new_rect; // Cria um novo retângulo na posição do clique
                             fixed_rects[num_fixed_rects].color = colors[num_fixed_rects]; // Pega a cor do array de cores
                             num_fixed_rects++; // Incrementa o contador de retângulos
                         }
