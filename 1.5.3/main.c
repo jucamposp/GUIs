@@ -23,10 +23,9 @@ int main(int argc, char* args[]) {
     SDL_Event event;
     Uint32 lastTick = SDL_GetTicks();
 
-    /* EXECUÇÃO */
-  // Loop principal orientado a eventos 
+    /* EXECUÇÃO */ 
     while (running) {
-        while (SDL_PollEvent(&event)) {
+        if (SDL_WaitEventTimeout(&event, 10)) {
             if (event.type == SDL_QUIT) {
                 running = false;
             }
@@ -58,7 +57,6 @@ int main(int argc, char* args[]) {
         SDL_RenderFillRect(ren, &bola);
       
         SDL_RenderPresent(ren);
-        SDL_Delay(16);
     }
 
     /* FINALIZAÇÃO */
