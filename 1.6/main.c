@@ -161,9 +161,6 @@ int main(int argc, char* args[]) {
         SDL_RenderFillRect(ren, &racer_mouse.rect);
         
         SDL_RenderPresent(ren);
-
-        // Pequeno delay para não sobrecarregar a CPU
-        SDL_Delay(16);
     }
 
     // FINALIZAÇÃO
