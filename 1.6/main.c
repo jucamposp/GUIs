@@ -54,7 +54,6 @@ void reset_race() {
 }
 
 int main(int argc, char* args[]) {
-    // INICIALIZAÇÃO DA SDL
     SDL_Init(SDL_INIT_VIDEO);
     srand(time(NULL)); // Inicializa o gerador de números aleatórios
 
