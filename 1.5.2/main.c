@@ -1,9 +1,6 @@
 #include <SDL2/SDL.h>
 
 int AUX_WaitEventTimeoutCount(SDL_Event* evt, Uint32* ms) {
-    if (*ms <= 0) {
-        return SDL_WaitEventTimeout(evt, 0);
-    }
   
     Uint32 start_time = SDL_GetTicks();
 
