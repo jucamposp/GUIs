@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <SDL2/SDL.h>
+#include <stdlib.h>
 
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
@@ -19,7 +20,9 @@ int main(int argc, char* args[]) {
     bool quit = false;
     SDL_Event event;
 
-    int click_cont = 0;
+    int total_click_cont = 0;
+    int multi_click_cont = 0;
+    bool is_multiclick = false;
 
     // Inicializa com fundo preto
     Uint8 bg_r = 0, bg_g = 0, bg_b = 0;
@@ -30,7 +33,7 @@ int main(int argc, char* args[]) {
 
     // --- 4. Loop Principal de Eventos ---
     while (!quit) {
-        if (SDL_WaitEvent(&event)) {
+        if (SDL_WaitEventTimeout(&event, 250)) {
             switch (event.type) {
                 case SDL_QUIT:
                     printf("Evento SDL_QUIT detectado. Encerrando o programa.\n");
@@ -45,11 +48,14 @@ int main(int argc, char* args[]) {
                     break;
 
                 case SDL_MOUSEBUTTONDOWN:
-                    click_cont++;
+                    total_click_cont++;
+
+                    multi_click_cont++;
+                    is_multiclick = true;
 
                     SDL_Event custom_event;
                     custom_event.type = SDL_USEREVENT;
-                    custom_event.user.code = click_count;
+                    custom_event.user.code = multi_click_cont;
                     custom_event.user.data1 = NULL;
                     custom_event.user.data2 = NULL;
 
@@ -57,14 +63,20 @@ int main(int argc, char* args[]) {
                     break;
 
                 case SDL_USEREVENT:
-                    printf("Evento customizado recebido! Código (contador de cliques): %d\n", event.user.code);
+                    printf("Clique detectado. Cliques na sequência atual: %d\n", event.user.code);
 
-                    
                     bg_r = rand() % 256;
                     bg_g = rand() % 256;
                     bg_b = rand() % 256;
                     
                     break;
+            }
+        }else {
+            // O tempo de 250ms sem um evento
+            if (is_multiclick) {
+                printf("Fim dos cliques. Total na sequencia: %d\n", multi_click_cont);
+                multi_click_cont = 0;
+                is_multiclick = false;
             }
         }
 
