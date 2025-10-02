@@ -82,13 +82,10 @@ int main(int argc, char* args[]) {
         SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
         SDL_RenderClear(ren);
 
-        // Define a cor do fundo
         SDL_SetRenderDrawColor(ren, bg_r, bg_g, bg_b, 255);
         
-        // Desenha o retângulo que preenche a tela
         SDL_RenderFillRect(ren, &color_rect);
 
-        // Atualiza a tela com o que foi renderizado
         SDL_RenderPresent(ren);
     }
   
