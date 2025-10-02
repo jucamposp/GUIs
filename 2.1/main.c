@@ -31,7 +31,6 @@ int main(int argc, char* args[]) {
 
     printf("Programa iniciado. Clique na janela ou pressione ESC para sair.\n");
 
-    // --- 4. Loop Principal de Eventos ---
     while (!quit) {
         if (SDL_WaitEventTimeout(&event, 250)) {
             switch (event.type) {
@@ -48,16 +47,16 @@ int main(int argc, char* args[]) {
                     break;
 
                 case SDL_MOUSEBUTTONDOWN:
-                    total_click_cont++;
+                    //total_click_cont++;
 
-                    multi_click_cont++;
-                    is_multiclick = true;
+                    //multi_click_cont++;
+                    //is_multiclick = true;
 
-                    SDL_Event custom_event;
-                    custom_event.type = SDL_USEREVENT;
-                    custom_event.user.code = multi_click_cont;
-                    custom_event.user.data1 = NULL;
-                    custom_event.user.data2 = NULL;
+                    //SDL_Event custom_event;
+                    //custom_event.type = SDL_USEREVENT;
+                    //custom_event.user.code = multi_click_cont;
+                    //custom_event.user.data1 = NULL;
+                    //custom_event.user.data2 = NULL;
 
                     SDL_PushEvent(&custom_event);
                     break;
@@ -73,10 +72,10 @@ int main(int argc, char* args[]) {
             }
         }else {
             // O tempo de 250ms sem um evento
-            if (is_multiclick) {
-                printf("Fim dos cliques. Total na sequencia: %d\n", multi_click_cont);
-                multi_click_cont = 0;
-                is_multiclick = false;
+            //if (is_multiclick) {
+                //printf("Fim dos cliques. Total na sequencia: %d\n", multi_click_cont);
+                //multi_click_cont = 0;
+                //is_multiclick = false;
             }
         }
 
