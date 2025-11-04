@@ -1,1 +1,3 @@
-O programa
+O programa exibe um quadrado azul e espera por eventos do usuário envolvendo interações com o mouse como clique, arrasto ou cancelamento das ações.
+Um clique é registrado se o botão esquerdo for solto sem mover o quadrado, mas se houver movimento, é considerado como arrasto.
+Se a tecla ESC for pressionada enquanto estiver clicando ou arrastando, o gesto é cancelado e o quadrado volta para a posição inicial salva.
