@@ -1,1 +1,2 @@
-O programa 
+O programa gerencia eventos do mouse, focando na distinção entre cliques simples (mudança na cor do quadrado) 
+e múltiplos cliques (mudança na cor de fundo da tela) contabilizando a quantidade de cliques dentro do intervalo de tempo de 250ms.
